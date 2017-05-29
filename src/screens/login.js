@@ -1,5 +1,6 @@
 import React from 'react';
-import {AppRegistry, StyleSheet, Text, View, Button} from 'react-native';
+import {AppRegistry, StyleSheet, Image} from 'react-native';
+import {Container, Header, Title, Content, Footer, FooterTab, Button, Left, Right, Body, Icon, Text } from 'native-base';
 import styles from '../style.js';
 
 export default class Login extends React.Component {
@@ -19,16 +20,26 @@ export default class Login extends React.Component {
     /*this.rollDice = this.rollDice.bind(this);*/
   }
 
-  static navigationOptions = {
-    title: 'Porcaddio',
-  }
+  static navigationOptions = ({ navigation }) => ({
+    title: 'Login',
+    header: null
+  })
 
 
   render() {
+    const {navigate} = this.props.navigation;
     return (
-      <View style={[styles.container,styles.bgred]}>
-        <Button onPress={() => navigate('Main', {titolo: 'Lucy'})} />
-      </View>
+      <Container>
+        <Image source={require('../bg.jpg')} style={StyleSheet.flatten(styles.bg)}>
+          <Content contentContainerStyle={StyleSheet.flatten([styles.container])}>
+            <Button onPress={() => navigate('Main', {titolo:'Lucy'})} title="schiacciami tutto"/>
+            <Button iconLeft>
+                <Icon name='logo-facebook' />
+                <Text style={StyleSheet.flatten(styles.fbButton)}>Login with Facebook</Text>
+            </Button>
+          </Content>
+        </Image>
+      </Container>
     );
   }
 }

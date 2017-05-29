@@ -2,7 +2,8 @@ import React from 'react';
 import {AppRegistry, StyleSheet, Text, View} from 'react-native';
 import styles from '../style.js';
 
-export default class Main extends React.Component {
+
+export default class Shop extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -18,17 +19,19 @@ export default class Main extends React.Component {
     /*this.rollDice = this.rollDice.bind(this);*/
   }
 
-  static navigationOptions = {
-    title: this.props.titolo,
-  }
+  static navigationOptions = ({ navigation }) => ({
+    title: navigation.state.params.titolo,
+  })
 
   render() {
+    const {params} = this.props.navigation.state;
+
     return (
       <View style={[styles.container,styles.bgblue]}>
-
+        <Text>Chat with {params.titolo}</Text>
       </View>
     );
   }
 }
 
-AppRegistry.registerComponent('Main', () => Main);
+AppRegistry.registerComponent('Shop', () => Shop);
