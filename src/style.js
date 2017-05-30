@@ -5,13 +5,16 @@ module.exports = StyleSheet.create({
     width: null,
     height: null,
   },
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor:'transparent'
+  content:{
+    flex: 4,
+    flexDirection:'column',
+    justifyContent:'center'
+  },
+  card:{
+    flex:3
+
   },
   fbButton: {
-    color:'red',
+    width:50,
   }
 });

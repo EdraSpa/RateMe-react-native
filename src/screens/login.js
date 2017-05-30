@@ -1,6 +1,6 @@
 import React from 'react';
-import {AppRegistry, StyleSheet, Image} from 'react-native';
-import {Container, Header, Title, Content, Footer, FooterTab, Button, Left, Right, Body, Icon, Text } from 'native-base';
+import {AppRegistry, StyleSheet, Image, View} from 'react-native';
+import {Container, Content, Header, Title, Card, CardItem, Text, Button, Body, Icon, Left, Right} from 'native-base';
 import styles from '../style.js';
 
 export default class Login extends React.Component {
@@ -30,13 +30,34 @@ export default class Login extends React.Component {
     const {navigate} = this.props.navigation;
     return (
       <Container>
-        <Image source={require('../bg.jpg')} style={StyleSheet.flatten(styles.bg)}>
-          <Content contentContainerStyle={StyleSheet.flatten([styles.container])}>
-            <Button onPress={() => navigate('Main', {titolo:'Lucy'})} title="schiacciami tutto"/>
-            <Button iconLeft>
-                <Icon name='logo-facebook' />
-                <Text style={StyleSheet.flatten(styles.fbButton)}>Login with Facebook</Text>
-            </Button>
+        <Image source={require('../bg.jpg')} style={StyleSheet.flatten([styles.bg])}>
+          <Content contentContainerStyle={StyleSheet.flatten(styles.content)}>
+            <Header>
+              <Left>
+                  <Button transparent>
+                      <Icon name='menu' />
+                  </Button>
+              </Left>
+              <Body>
+                  <Title>Header</Title>
+              </Body>
+              <Right />
+            </Header>
+            <Card style={StyleSheet.flatten(styles.card)}>
+              <CardItem header>
+                  <Text>LOGIN</Text>
+              </CardItem>
+              <CardItem>
+                  <Body>
+                    <Button onPress={() => navigate('Main', {titolo:'Lucy'})} title="schiacciami tutto"/>
+                    <Button iconLeft>
+                        <Icon name='logo-facebook' />
+                        <Text style={StyleSheet.flatten(styles.fbButton)}>Login with Facebook</Text>
+                    </Button>
+                  </Body>
+              </CardItem>
+            </Card>
+
           </Content>
         </Image>
       </Container>
