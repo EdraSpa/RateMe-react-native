@@ -1,23 +1,12 @@
 import React from 'react';
 import {AppRegistry, StyleSheet, Image, View} from 'react-native';
-import {Container, Content, Header, Title, Card, CardItem, Text, Button, Body, Icon, Left, Right} from 'native-base';
+import {Txt, Title} from '../text.js';
+import {Container, Button, Icon, Left, Right} from 'native-base';
 import styles from '../style.js';
 
 export default class Login extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      step: 0,
-      triggerStep:0,
-      dots:{0:1,1:0,2:0,3:0,4:0,5:0,6:0,7:0,8:0,9:0,10:0,11:0,12:0,13:0,14:0,15:0},
-      activeDots:{0:0,1:1,2:0,3:1,4:0,5:1,6:0,7:1,8:0,9:1,10:0,11:1,12:0,13:1,14:0,15:1},
-      overlayStart:1,
-      lastDice:0,
-      activeDice:1
-
-    };
-
-    /*this.rollDice = this.rollDice.bind(this);*/
   }
 
   static navigationOptions = ({ navigation }) => ({
@@ -31,34 +20,35 @@ export default class Login extends React.Component {
     return (
       <Container>
         <Image source={require('../bg.jpg')} style={StyleSheet.flatten([styles.bg])}>
-          <Content contentContainerStyle={StyleSheet.flatten(styles.content)}>
-            <Header>
-              <Left>
-                  <Button transparent>
-                      <Icon name='menu' />
-                  </Button>
-              </Left>
-              <Body>
-                  <Title>Header</Title>
-              </Body>
-              <Right />
-            </Header>
-            <Card style={StyleSheet.flatten(styles.card)}>
-              <CardItem header>
-                  <Text>LOGIN</Text>
-              </CardItem>
-              <CardItem>
-                  <Body>
-                    <Button onPress={() => navigate('Main', {titolo:'Lucy'})} title="schiacciami tutto"/>
-                    <Button iconLeft>
-                        <Icon name='logo-facebook' />
-                        <Text style={StyleSheet.flatten(styles.fbButton)}>Login with Facebook</Text>
-                    </Button>
-                  </Body>
-              </CardItem>
-            </Card>
+          <View style={StyleSheet.flatten(styles.header)}>
+            <Image source={require('../logo.png')} style={StyleSheet.flatten(styles.logo)}/>
+            <Image source={require('../head.png')} style={StyleSheet.flatten(styles.headerImg)}/>
+            <Icon name='md-settings' onPress={() => navigate('Main', {titolo:'Lucy'})} style={StyleSheet.flatten(styles.headerBtn)}/>
+          </View>
+          <View style={StyleSheet.flatten(styles.separator)}/>
 
-          </Content>
+
+          <View style={StyleSheet.flatten(styles.content)}>
+            <View style={StyleSheet.flatten(styles.card)}>
+              <View style={StyleSheet.flatten(styles.cardHead)}>
+                <Title style={StyleSheet.flatten(styles.cardHeadText)} color="#333333" txt="LOGIN"/>
+              </View>
+              <View style={StyleSheet.flatten(styles.cardBody)}>
+                <Button iconLeft onPress={() => navigate('Main', {titolo:'Lucy'})} style={StyleSheet.flatten(styles.fbButton)}>
+                  <Icon name='logo-facebook'/>
+                  <Txt style={StyleSheet.flatten(styles.btnText)} color="#fafafa" txt="Login with Facebook"/>
+                </Button>
+                <Button iconLeft onPress={() => navigate('Main', {titolo:'Lucy'})} style={StyleSheet.flatten(styles.twButton)}>
+                  <Icon name='logo-twitter'/>
+                  <Txt style={StyleSheet.flatten(styles.btnText)} color="#fafafa" txt="Login with Twitter"/>
+                </Button>
+                <Button iconLeft onPress={() => navigate('Main', {titolo:'Lucy'})} style={StyleSheet.flatten(styles.gButton)}>
+                  <Icon name='logo-google'/>
+                  <Txt style={StyleSheet.flatten(styles.btnText)} color="#fafafa" txt="Login with Google"/>
+                </Button>
+              </View>
+            </View>
+          </View>
         </Image>
       </Container>
     );
